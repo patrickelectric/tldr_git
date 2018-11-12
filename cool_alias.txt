@@ -1,0 +1,21 @@
+[alias]
+   # Avoid git git commands
+   git = !git
+
+   # Create a branch from a github remote, using the PR number and the remote name
+   # git pr remote_name pr_number branch_name extra_args
+   pr = "!f() { git fetch $1 pull/$2/head:$3 $4; }; f"
+
+   # git cloneorg org
+   cloneorg = "!f() { \
+       ORG_URL=\"https://api.github.com/orgs/$1/repos?per_page=200\"; \
+       ALL_REPOS=$(curl -s ${ORG_URL} | grep html_url | awk 'NR%2 == 0' | cut -d ':' -f 2-3 | tr -d '\",'); \
+       for ORG_REPO in ${ALL_REPOS}; do git clone ${ORG_REPO}.git; done; \
+   }; f"
+
+   # List branchs by age
+   branch-by-age = for-each-ref --sort=committerdate refs/heads/ --format='%(authordate) \t %(refname:short)''
+
+   # git fix-old number
+   # Will apply a fixup in the n-old commit
+   fix-old = "!f() { git commit --fixup=$(git rev-parse HEAD~$(($1-1))); }; f"
