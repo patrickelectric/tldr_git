@@ -1,3 +1,13 @@
+[color]
+   ui = true
+
+[core]
+   editor = nano
+   pager = diff-so-fancy | less --tabs=4 -RFX
+
+[url "https://github.com/"]
+   insteadOf = github:
+
 [alias]
    # Avoid git git commands
    git = !git
