@@ -7,7 +7,7 @@ File with some examples of usages and cases with git commands.
 
 - [**HERE**](/commands.md)
 
-## Alias
+## Git Config
 File with some helpers to improve git environment experience.
 
-- [**HERE**](/cool_alias.txt)
+- [**HERE**](/gitconfig.txt)
