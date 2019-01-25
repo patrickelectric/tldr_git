@@ -20,3 +20,11 @@ repository_path=$(git rev-parse --git-dir)/..
 # Run testcomments script to check if all comments are valid before pushing it to the remote
 $repository_path/tools/testcomments.sh
 ```
+
+``
+#!/bin/sh
+
+echo "Running pre-push hook !"
+git fetch origin
+git rebase origin/master
+``
