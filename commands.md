@@ -157,11 +157,21 @@ git push mirror --mirror
 `git push remote refs/heads/branch_name`
 `git push remote refs/tags/tag_name`
 
+# Config
+## Save login/pass for some time in this session
+`git config --global credential.helper "cache --timeout 7200"`
+
 # Util bash examples
 ## Add each individual modified file and commit it with name: message
 `for file in $(git ls-files --modified); do git add $file; git commit -sm "${$(basename $file)%.*}: message"; done`
 ## Update banch1 and branch2 over origin/master and update my_remote
 `for branch in branch1 branch2; do git rebase origin/master $branch; git push my_remote $branch --force; done`
+## Delete all tags with a prefix name in remote or local
+```bash
+# Check login/pass timeout command
+# Remove <prefix> tags
+for tag in $(git tag | grep <prefix>); do git push <remote> :$tag; done
+```
 
 
 # .gitignore
