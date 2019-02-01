@@ -40,6 +40,8 @@
 # Add
 ## Add in interactive
 `git add -p`
+## Add and create a commit
+`git commit -p`
 ## Add path from root folder (: = project root folder)
 `git add :/path`
 
