@@ -21,10 +21,10 @@ repository_path=$(git rev-parse --git-dir)/..
 $repository_path/tools/testcomments.sh
 ```
 
-``
+```
 #!/bin/sh
 
 echo "Running pre-push hook !"
 git fetch origin
 git rebase origin/master
-``
+```
