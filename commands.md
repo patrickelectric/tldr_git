@@ -163,6 +163,12 @@ git push mirror --mirror
 ## Save login/pass for some time in this session
 `git config --global credential.helper "cache --timeout 7200"`
 
+# Filter-branch
+## Replace 'batata' with 'potato' in .py files from HEAD to HEAD~5
+`git filter-branch -f --tree-filter "find . -name '*.py' -exec sed -i -e 's/batata/potato/g' {} \;" HEAD~5..HEAD`
+## Replace 'batata' with 'potato in commit messages from HEAD to HEAD~5
+`git filter-branch -f --msg-filter 'sed "s/batata/potato/g"' HEAD~5..HEAD`
+
 # Util bash examples
 ## Add each individual modified file and commit it with name: message
 `for file in $(git ls-files --modified); do git add $file; git commit -sm "${$(basename $file)%.*}: message"; done`
