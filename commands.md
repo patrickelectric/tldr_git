@@ -146,6 +146,18 @@ git remote add mirror link
 git push mirror --mirror
 ```
 
+# Optimization and organization
+## Cleanup unnecessary files and optimize the local repository
+`git gc --prune=now --aggressive`
+## Rename branch
+`git branch -m old-name new-name`
+## Rename current branch
+`git branch -m new-name`
+## Push with different name
+`git push REMOTE LOCAL_BRANCH:REMOTE_BRANCH`
+## Delete remote branch
+`git push REMOTE :REMOTE_BRANCH`
+
 # HG
 ## Create a hg mirror
 `git clone hg::https://username@mail.com:pass@bitbucket.org/user/repo`
