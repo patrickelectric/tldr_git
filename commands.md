@@ -28,7 +28,7 @@
 ## Git fetch all remotes
 `git fetch --all`
 
-# diffs/patchs
+# diffs/patchs/archives
 ## Show diff from HEAD and stash
 `git stash show -p stash@{0}`
 `git diff stash@{0} HEAD`
@@ -36,6 +36,8 @@
 `git diff HEAD master -- myfile.md`
 ## Create a patch from the n commits from the hash
 `git format-patch -n hash --stdout > magic_feature.patch`
+## Create .tar.gz with all tracked files
+`git archive --format=tar HEAD | gzip > example.tar.gz`
 
 # Add
 ## Add in interactive
