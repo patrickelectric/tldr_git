@@ -58,6 +58,10 @@
 ## Now you have two commits !
 ## Rebase in interactive mode the last 3 commits
 `git rebase -i HEAD~3`
+## Change the base branch
+- This should be called in the branch that you want to change the base
+
+`git rebase --onto new_base_branch old_base_branch`
 
 # Commit
 ## Commit a message with a sign
