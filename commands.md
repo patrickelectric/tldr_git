@@ -198,6 +198,8 @@ git push mirror --mirror
 # Remove <prefix> tags
 for tag in $(git tag | grep <prefix>); do git push <remote> :$tag; done
 ```
+## Add all tracked folders that changed in tracked content
+`for x in $(git status -uno | grep modified | cut -c 14- | cut -d '/' -f1 | sort -u); do git add -u $x; git commit -sm "$x: Style changed!"; done;`
 
 
 # .gitignore
