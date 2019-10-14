@@ -8,6 +8,17 @@
 [url "https://github.com/"]
    insteadOf = github:
 
+[url "https://github.com/patrickelectric/"]
+   insteadOf = eu:
+
+[url "https://github.com/bluerobotics/"]
+   insteadOf = blue:
+
+[url "https://anongit.kde.org/"]
+    insteadOf = kde:
+[url "git@git.kde.org:"]
+    pushInsteadOf = kde:
+
 [alias]
    # Avoid git git commands
    git = !git
@@ -24,8 +35,21 @@
    }; f"
 
    # List branchs by age
-   branch-by-age = for-each-ref --sort=committerdate refs/heads/ --format='%(authordate) \t %(refname:short)''
+   branch-by-age = for-each-ref --sort=committerdate refs/heads/ --format='%(authordate) \t %(refname:short)'
 
    # git fix-old number
    # Will apply a fixup in the n-old commit
    fix-old = "!f() { git commit --fixup=$(git rev-parse HEAD~$(($1-1))); }; f"
+
+[user]
+    email = patrickelectric@gmail.com
+    name = Patrick José Pereira
+
+[rebase]
+    autosquash = true
+
+[tig]
+    diff-highlight = false
+
+[credential]
+    helper = cache --timeout 7200
