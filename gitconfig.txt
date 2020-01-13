@@ -26,6 +26,16 @@
    # Create a branch from a github remote, using the PR number and the remote name
    # git pr remote_name pr_number branch_name extra_args
    pr = "!f() { git fetch $1 pull/$2/head:$3 $4; }; f"
+   
+   # Commit each file in a commit with $file_without_extension: $1
+   # git commit-each-file "my message"
+   commit-each-file = "!f() { \
+      for i in $(git ls-files -m); do \
+         git add \"$i\"; \
+         FILE=$(basename -- $i); \
+         git commit -sm \"${FILE%.*}: $1\"; \
+      done \
+   }; f"
 
    # git cloneorg org
    cloneorg = "!f() { \
