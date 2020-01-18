@@ -50,6 +50,9 @@
    # git fix-old number
    # Will apply a fixup in the n-old commit
    fix-old = "!f() { git commit --fixup=$(git rev-parse HEAD~$(($1-1))); }; f"
+   
+   # git contributions
+   contributions = shortlog -sne
 
 [user]
     email = patrickelectric@gmail.com
