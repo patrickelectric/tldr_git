@@ -51,6 +51,18 @@
    # Will apply a fixup in the n-old commit
    fix-old = "!f() { git commit --fixup=$(git rev-parse HEAD~$(($1-1))); }; f"
    
+   # git update
+   # Save branch with name-time and get the new branch from origin with the same name
+   update = "!f() { \
+      NAME=$(git symbolic-ref --short HEAD); \
+      TIME=$(git log -1 --date=format:"%Y-%m-%d-%H-%M-%S" --format=%ad); \
+      NEW_NAME=$NAME-$TIME; \
+      git branch -m $NAME-$TIME; \
+      git checkout $NAME; \
+      echo "Saving old branch as $NEW_NAME"; \
+   }; f"
+
+   
    # git contributions
    contributions = shortlog -sne
 
