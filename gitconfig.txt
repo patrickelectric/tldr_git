@@ -10,6 +10,8 @@
 
 [url "https://github.com/patrickelectric/"]
    insteadOf = eu:
+[url "git@github.com:patrickelectric/"]
+   pushInsteadOf = eu:
 
 [url "https://github.com/bluerobotics/"]
    insteadOf = blue:
