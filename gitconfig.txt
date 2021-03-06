@@ -8,6 +8,11 @@
 [url "https://github.com/"]
    insteadOf = github:
 
+[url "https://github.com/"]
+   insteadOf = github-dev:
+[url "git@github.com:"]
+    pushInsteadOf = github-dev:
+
 [url "https://github.com/patrickelectric/"]
    insteadOf = eu:
 [url "git@github.com:patrickelectric/"]
