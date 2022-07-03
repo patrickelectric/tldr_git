@@ -34,11 +34,11 @@
    # git pr remote_name pr_number branch_name extra_args
    pr = "!f() { \
       BRANCH=${3:-\"pr_$2\"}; \
-      git fetch $1 pull/$2/head:$BRANCH $4; \ 
+      git fetch $1 pull/$2/head:$BRANCH; \
       git checkout $BRANCH; \
       git log master..$BRANCH --oneline; \
-   }; f
-   
+   }; f"
+
    # Commit each file in a commit with $file_without_extension: $1
    # git commit-each-file "my message"
    commit-each-file = "!f() { \
@@ -52,7 +52,7 @@
    # git cloneorg org
    cloneorg = "!f() { \
        ORG_URL=\"https://api.github.com/orgs/$1/repos?per_page=200\"; \
-       ALL_REPOS=$(curl -s ${ORG_URL} | grep html_url | awk 'NR%2 == 0' | cut -d ':' -f 2-3 | tr -d '\",'); \
+       ALL_REPOS=$(curl -s ${ORG_URL} | grep html_url | awk 'NR%2 == 0' | cut -d ':' -f 2-3 | tr -d '\",\"'); \
        for ORG_REPO in ${ALL_REPOS}; do git clone ${ORG_REPO}.git; done; \
    }; f"
 
@@ -62,7 +62,7 @@
    # git fix-old number
    # Will apply a fixup in the n-old commit
    fix-old = "!f() { git commit --fixup=$(git rev-parse HEAD~$(($1-1))); }; f"
-   
+
    # git update
    # Save branch with name-time and get the new branch from origin with the same name
    update = "!f() { \
@@ -74,7 +74,7 @@
       echo "Saving old branch as $NEW_NAME"; \
    }; f"
 
-   
+
    # git contributions
    contributions = shortlog -sne
 
