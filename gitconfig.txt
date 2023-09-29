@@ -3,7 +3,18 @@
 
 [core]
    editor = nano
-   pager = diff-so-fancy | less --tabs=4 -RFX
+   # pager = diff-so-fancy | less --tabs=4 -RFX
+
+[delta]
+    features = decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    plus-style = syntax
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+
 
 [url "https://github.com/"]
    insteadOf = github:
@@ -80,6 +91,26 @@
 
    # git contributions
    contributions = shortlog -sne
+
+   stats = "!f() { \
+     status=$(git status --porcelain); \
+     IFS=$'\\n'; \
+     for line in $status; do \
+         file=${line:3}; \
+         case ${line:0:2} in \
+         \" M\") \
+             echo -e \"\\e[31m󱠡 $file\\e[0m\" \
+             ;; \
+         \"M \") \
+             echo -e \"\\e[32m $file\\e[0m\" \
+             ;; \
+         \"??\") \
+             echo -e \"\\e[33m󱁏 $file\\e[0m\" \
+             ;; \
+         esac; \
+     done; \
+   }; f"
+
 
 [user]
     email = patrickelectric@gmail.com
