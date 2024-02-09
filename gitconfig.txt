@@ -111,6 +111,8 @@
      done; \
    }; f"
 
+   # git apply-from-url URL (with or without.patch) to apply in current 
+   apply-from-url = "!f() { url=$1; if [[ ! $url =~ .patch$ ]]; then url="$url.patch"; fi; curl -sL $url | git apply -; }; f"
 
 [user]
     email = patrickelectric@gmail.com
