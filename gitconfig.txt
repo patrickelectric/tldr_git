@@ -63,6 +63,13 @@
       done \
    }; f"
 
+
+   # git cry origin/master
+   cry = "!f() { \
+       git absorb --base $1; \
+       git -c core.editor=true rebase -i --autostash $1; \
+   }; f"
+
    # git cloneorg org
    cloneorg = "!f() { \
        ORG_URL=\"https://api.github.com/orgs/$1/repos?per_page=200\"; \
