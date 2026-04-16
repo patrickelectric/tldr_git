@@ -53,6 +53,15 @@
       git log master..$BRANCH --oneline; \
    }; f"
 
+   # List all PR's from a github remote
+   # git pr-list
+   pr-list = "!f() { \
+     REPO=${1:-$(gh repo view --json nameWithOwner --jq .nameWithOwner)}; \
+     GH_PAGER=cat gh pr list --repo \"$REPO\" --state all --limit 100 \
+       --json number,title,author \
+       --jq 'reverse | .[] | \"#\\(.number)\\t\\(.title)\\n- \\(.author.login)\"'; \
+   }; f"
+
    # Commit each file in a commit with $file_without_extension: $1
    # git commit-each-file "my message"
    commit-each-file = "!f() { \
